@@ -11,12 +11,7 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<TabKey>("assistant");
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
-      // style={{ backgroundImage: "url('/bg-2.jpeg')" }}
-    >
-      <div className="absolute inset-0 bg-white/50 backdrop-blur-[3px] pointer-events-none" />
-
+    <div className="min-h-screen bg-cover bg-center bg-no-repeat relative">
       <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
         <TabNav activeTab={activeTab} onTabChange={setActiveTab} />

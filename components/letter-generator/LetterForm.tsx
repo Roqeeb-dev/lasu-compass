@@ -1,5 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { LetterData } from "@/types/types";
 import { letterConfigs } from "@/types/templates";
+import { polishPurpose } from "@/lib/apiclient";
+import { Sparkles, Loader2 } from "lucide-react";
 
 type Props = {
   letterType: string;
@@ -38,6 +43,26 @@ export default function LetterForm({
   formData,
   onChange,
 }: Props) {
+  const [isPolishing, setIsPolishing] = useState(false);
+
+  const handlePolishPurpose = async () => {
+    if (!formData.purpose.trim() || isPolishing) return;
+    setIsPolishing(true);
+
+    try {
+      // Sending only raw data to the backend endpoint
+      const data = await polishPurpose(formData.purpose);
+
+      if (data.polished_text) {
+        onChange("purpose", data.polished_text);
+      }
+    } catch (error) {
+      console.error("Gemma failed to polish the purpose:", error);
+    } finally {
+      setIsPolishing(false);
+    }
+  };
+
   return (
     <div className="bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-5 sm:p-6">
       <h3 className="text-lg font-bold text-gray-900 mb-4">Letter details</h3>
@@ -75,14 +100,41 @@ export default function LetterForm({
           </div>
         ))}
 
+        {/* Purpose block with backend-bound Gemma Integration */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-            Purpose / reason
-          </label>
+          <div className="flex justify-between items-center mb-1.5">
+            <label className="text-sm font-semibold text-gray-700">
+              Purpose / reason
+            </label>
+
+            <button
+              type="button"
+              onClick={handlePolishPurpose}
+              disabled={isPolishing || !formData.purpose.trim()}
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-sm border transition-all ${
+                formData.purpose.trim() && !isPolishing
+                  ? "bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 active:scale-95"
+                  : "bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed"
+              }`}
+            >
+              {isPolishing ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
+                  Polishing...
+                </>
+              ) : (
+                <>
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                  Polish with Gemma
+                </>
+              )}
+            </button>
+          </div>
+
           <textarea
             value={formData.purpose}
             onChange={(e) => onChange("purpose", e.target.value)}
-            placeholder="Briefly explain your request..."
+            placeholder="e.g. i want to request course over-registration because i missed the prerequisite course last semester..."
             rows={3}
             className="w-full rounded-xl border-2 border-gray-200 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 resize-none"
           />
