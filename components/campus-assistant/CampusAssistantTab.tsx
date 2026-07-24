@@ -18,7 +18,7 @@ export default function CampusAssistantTab() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="h-[calc(100vh-112px)] flex flex-col">
+    <div className="h-[calc(100vh-120px)] flex flex-col">
       <div className="flex-1 overflow-y-auto">
         <div className="max-w-3xl mx-auto px-4 py-4 h-full flex flex-col justify-center space-y-3">
           {isEmpty ? (
