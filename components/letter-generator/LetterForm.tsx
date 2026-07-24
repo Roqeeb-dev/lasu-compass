@@ -106,29 +106,6 @@ export default function LetterForm({
             <label className="text-sm font-semibold text-gray-700">
               Purpose / reason
             </label>
-
-            <button
-              type="button"
-              onClick={handlePolishPurpose}
-              disabled={isPolishing || !formData.purpose.trim()}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold shadow-sm border transition-all ${
-                formData.purpose.trim() && !isPolishing
-                  ? "bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 active:scale-95"
-                  : "bg-gray-50 text-gray-400 border-gray-200 cursor-not-allowed"
-              }`}
-            >
-              {isPolishing ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
-                  Polishing...
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                  Polish with Gemma
-                </>
-              )}
-            </button>
           </div>
 
           <textarea
