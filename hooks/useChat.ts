@@ -1,10 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Message } from "@/types/chat";
 import { postChat } from "@/lib/apiclient";
 
-export function useChat() {
-  const [messages, setMessages] = useState<Message[]>([]);
+// 1. Accept an optional sessionId (string or null)
+export function useChat(
+  initialMessages: Message[] = [],
+  sessionId: string | null = null,
+) {
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setMessages(initialMessages);
+  }, [sessionId]);
 
   async function sendMessage(query: string) {
     if (!query.trim() || isLoading) return;
@@ -42,5 +50,5 @@ export function useChat() {
     }
   }
 
-  return { messages, isLoading, sendMessage };
+  return { messages, setMessages, isLoading, sendMessage };
 }
