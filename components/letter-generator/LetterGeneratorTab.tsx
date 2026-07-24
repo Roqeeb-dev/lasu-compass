@@ -26,6 +26,7 @@ const initialData: LetterData = {
 export default function LetterGeneratorTab() {
   const [letterType, setLetterType] = useState("correctionOfResult");
   const [formData, setFormData] = useState<LetterData>(initialData);
+  const [isPrinting, setIsPrinting] = useState(false); // Controls print mode styling
 
   const handleChange = (field: keyof LetterData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -42,8 +43,15 @@ export default function LetterGeneratorTab() {
         />
 
         <div className="space-y-4">
-          <LetterPreview letterType={letterType} data={formData} />
-          <DownloadButton filename={`${letterType}_letter.pdf`} />
+          <LetterPreview
+            letterType={letterType}
+            data={formData}
+            isPrinting={isPrinting}
+          />
+          <DownloadButton
+            filename={`${letterType}_letter.pdf`}
+            onPrintChange={setIsPrinting}
+          />
         </div>
       </div>
     </div>

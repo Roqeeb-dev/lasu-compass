@@ -19,10 +19,12 @@ export async function postChat(payload: ChatRequest): Promise<ChatResponse> {
 export async function polishPurpose(
   text: string,
 ): Promise<{ polished_text: string }> {
-  const res = await fetch(`${API_URL}/api/polish`, {
+  const res = await fetch(`${API_URL}/letters/polish-purpose`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({
+      raw_purpose: text,
+    }),
   });
 
   if (!res.ok) {
