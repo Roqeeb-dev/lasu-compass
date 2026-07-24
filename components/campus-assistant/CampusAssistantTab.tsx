@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useChat } from "@/hooks/useChat";
+import { Compass, MessageSquare } from "lucide-react";
 import ChatMessage from "@/components/campus-assistant/ChatMessage";
 import ChatInput from "@/components/campus-assistant/ChatInput";
 import TypingIndicator from "@/components/campus-assistant/TypingIndicator";
@@ -110,8 +111,8 @@ export default function CampusAssistantTab() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="h-full flex flex-row overflow-hidden">
-      {/* RENDER SEPARATED SIDEBAR */}
+    <div className="h-full flex flex-row overflow-hidden bg-white/10">
+      {/* Sidebar Component */}
       <ChatSidebar
         sessions={sessions}
         activeSessionId={activeSessionId}
@@ -120,33 +121,49 @@ export default function CampusAssistantTab() {
         onDeleteSession={handleDeleteSession}
       />
 
-      {/* CHAT INTERFACE WINDOW */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden">
-        {/* Helper bar to create first chat if state somehow resets */}
+      {/* Main Chat Area */}
+      <div className="flex-1 flex flex-col h-full overflow-hidden bg-white/40">
+        {/* Prominent Welcome State */}
         {!activeSessionId && sessions.length === 0 && (
-          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center">
-            <h3 className="text-lg font-medium text-gray-800 mb-2">
-              Welcome to LASU Compass AI
-            </h3>
-            <p className="text-sm text-gray-500 max-w-sm mb-4">
-              Start a new conversation to ask questions about courses,
-              procedures, and clearance guidelines.
-            </p>
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center max-w-xl mx-auto space-y-6">
+            {/* Glowing Icon Badge */}
+            <div className="w-20 h-20 rounded-3xl bg-blue-50/80 border border-blue-100 flex items-center justify-center text-blue-600 shadow-md shadow-blue-50">
+              <Compass className="w-10 h-10 stroke-[1.5]" />
+            </div>
+
+            <div className="space-y-3">
+              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                Welcome to{" "}
+                <span className="text-blue-600">LASU Compass AI</span>
+              </h2>
+              <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-md mx-auto">
+                Your digital assistant for Lagos State University. Start a new
+                conversation to ask questions about courses, procedures, and
+                clearance guidelines.
+              </p>
+            </div>
+
             <button
               onClick={handleCreateNewChat}
-              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow transition"
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-2xl shadow-lg hover:shadow-xl transition-all transform active:scale-[0.98]"
             >
-              Start Chat
+              <MessageSquare className="w-5 h-5" />
+              Start Chatting
             </button>
           </div>
         )}
 
+        {/* Chat Window with Spacing Alignments */}
         {activeSessionId && (
-          <>
-            <div className="flex-1 overflow-y-auto">
-              <div className="max-w-3xl mx-auto px-4 py-6 flex flex-col space-y-4">
+          <div className="flex-1 flex flex-col h-full overflow-hidden relative">
+            {/* Scrollable messages box */}
+            <div className="flex-1 overflow-y-auto px-4 py-6 md:px-6">
+              <div className="max-w-3xl mx-auto space-y-6 pb-2">
                 {isEmpty ? (
-                  <SuggestedQuestions onSelect={sendMessage} />
+                  // Align SuggestedQuestions nicely in vertical space
+                  <div className="py-8">
+                    <SuggestedQuestions onSelect={sendMessage} />
+                  </div>
                 ) : (
                   <>
                     {messages.map((msg, i) => (
@@ -159,10 +176,13 @@ export default function CampusAssistantTab() {
               </div>
             </div>
 
-            <div className="max-w-3xl w-full mx-auto p-4 border-t border-gray-100 bg-white/40 backdrop-blur-sm rounded-b-2xl">
-              <ChatInput onSend={sendMessage} isLoading={isLoading} />
+            {/* Input Box at Bottom with clear separator and padding */}
+            <div className="w-full border-t border-gray-100 bg-white/60 backdrop-blur-md p-4">
+              <div className="max-w-3xl mx-auto">
+                <ChatInput onSend={sendMessage} isLoading={isLoading} />
+              </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>
