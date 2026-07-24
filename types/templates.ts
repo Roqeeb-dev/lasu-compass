@@ -1,4 +1,4 @@
-import { LetterConfig, LetterData } from "./types";
+import { LetterConfig } from "./types";
 
 const fallback = (value: string, placeholder: string) => value || placeholder;
 

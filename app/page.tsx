@@ -11,13 +11,30 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<TabKey>("assistant");
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
+    <div
+      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
+      // style={{ backgroundImage: "url('/bg-2.jpeg')" }}
+    >
+      <div className="absolute inset-0 bg-white/50 backdrop-blur-[3px] pointer-events-none" />
 
-      {activeTab === "assistant" && <CampusAssistantTab />}
-      {activeTab === "procedures" && <ProceduresGuideTab />}
-      {activeTab === "letters" && <LetterGeneratorTab />}
+      <div className="relative z-10 flex flex-col min-h-screen">
+        <Header />
+        <TabNav activeTab={activeTab} onTabChange={setActiveTab} />
+
+        <main className="flex-1">
+          <div className={activeTab === "assistant" ? "block" : "hidden"}>
+            <CampusAssistantTab />
+          </div>
+
+          <div className={activeTab === "procedures" ? "block" : "hidden"}>
+            <ProceduresGuideTab />
+          </div>
+
+          <div className={activeTab === "letters" ? "block" : "hidden"}>
+            <LetterGeneratorTab />
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

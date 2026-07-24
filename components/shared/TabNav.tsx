@@ -18,7 +18,7 @@ type Props = {
 
 export default function TabNav({ activeTab, onTabChange }: Props) {
   return (
-    <nav className="border-b border-gray-200 bg-white flex items-center w-full">
+    <nav className="border-b border-gray-200 bg-white flex items-center w-full sticky top-12">
       <div className="max-w-5xl mx-auto p-4 flex gap-6">
         {TABS.map((tab) => {
           const isActive = tab.key === activeTab;
