@@ -13,7 +13,14 @@ export default function LetterPreview({ letterType, data }: Props) {
   return (
     <div
       id="letter-preview"
-      className="bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-6 sm:p-8 font-serif text-sm leading-relaxed text-gray-900"
+      className="rounded-2xl border-2 p-6 sm:p-8 font-serif text-sm leading-relaxed"
+      style={{
+        backgroundColor: "#ffffff",
+        color: "#111827",
+        borderColor: "#e5e7eb",
+        borderStyle: "solid",
+        boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      }}
     >
       <div className="mb-6 whitespace-pre-line">
         {data.name || "[Your Name]"}
