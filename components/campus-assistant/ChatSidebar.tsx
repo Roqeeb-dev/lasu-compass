@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Plus, MessageSquare, Trash2 } from "lucide-react";
+import { Plus, MessageSquare, Trash2, X } from "lucide-react";
 
 export interface ChatSession {
   id: string;
@@ -20,6 +20,7 @@ interface ChatSidebarProps {
   onSelectSession: (id: string) => void;
   onCreateNewChat: () => void;
   onDeleteSession: (id: string, e: React.MouseEvent) => void;
+  onClose?: () => void; // mobile-only close button
 }
 
 export default function ChatSidebar({
@@ -28,21 +29,32 @@ export default function ChatSidebar({
   onSelectSession,
   onCreateNewChat,
   onDeleteSession,
+  onClose,
 }: ChatSidebarProps) {
   return (
-    <aside className="w-64 border-r border-gray-200/60 bg-white/40 backdrop-blur-sm hidden md:flex flex-col h-full">
-      <div className="p-4 border-b border-gray-200/50">
+    <aside className="w-64 h-full flex flex-col border-r border-gray-200 bg-white">
+      <div className="shrink-0 p-4 border-b border-gray-200 flex items-center gap-2">
         <button
           onClick={onCreateNewChat}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow-sm transition"
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow-sm transition"
         >
           <Plus className="w-5 h-5" />
           New Chat
         </button>
+
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="md:hidden shrink-0 p-2 rounded-lg text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+            aria-label="Close sidebar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
       </div>
 
-      {/* Saved Sessions Scrollbox */}
-      <div className="flex-1 overflow-y-auto p-2 space-y-1">
+      {/* This is the ONLY scrollable region in the sidebar */}
+      <div className="flex-1 min-h-0 overflow-y-auto p-2 space-y-1">
         {sessions.map((session) => (
           <div
             key={session.id}
@@ -50,7 +62,7 @@ export default function ChatSidebar({
             className={`group flex items-center justify-between px-3 py-2.5 rounded-xl cursor-pointer text-sm transition-all ${
               activeSessionId === session.id
                 ? "bg-blue-50 text-blue-700 font-medium"
-                : "text-gray-600 hover:bg-gray-100/70 hover:text-gray-900"
+                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
             }`}
           >
             <div className="flex items-center gap-2.5 min-w-0">
@@ -60,7 +72,7 @@ export default function ChatSidebar({
 
             <button
               onClick={(e) => onDeleteSession(session.id, e)}
-              className="opacity-0 group-hover:opacity-100 hover:bg-red-50 p-1 rounded-md text-red-500 transition-all"
+              className="opacity-0 group-hover:opacity-100 hover:bg-red-50 p-1 rounded-md text-red-500 transition-all shrink-0"
             >
               <Trash2 className="w-4 h-4" />
             </button>

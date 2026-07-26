@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useChat } from "@/hooks/useChat";
-import { Compass } from "lucide-react";
+import { Compass, Menu } from "lucide-react";
 import ChatMessage from "@/components/campus-assistant/ChatMessage";
 import ChatInput from "@/components/campus-assistant/ChatInput";
 import TypingIndicator from "@/components/campus-assistant/TypingIndicator";
@@ -25,6 +25,7 @@ function createSession(): ChatSession {
 export default function CampusAssistantTab() {
   const [sessions, setSessions] = useState<ChatSession[]>([]);
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -85,6 +86,7 @@ export default function CampusAssistantTab() {
     if (selected && setMessages) {
       setMessages(selected.messages);
     }
+    setIsSidebarOpen(false); // close drawer after picking a chat on mobile
   };
 
   const handleCreateNewChat = () => {
@@ -93,6 +95,7 @@ export default function CampusAssistantTab() {
     saveToStorage(updated);
     setActiveSessionId(newSession.id);
     if (setMessages) setMessages([]);
+    setIsSidebarOpen(false);
   };
 
   const handleDeleteSession = (id: string, e: React.MouseEvent) => {
@@ -116,18 +119,52 @@ export default function CampusAssistantTab() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="h-full flex bg-gray-50">
-      <div className="hidden md:flex h-full min-h-0">
+    <div className="h-full flex min-h-0 relative">
+      {/* Mobile-only dimmed backdrop, tapping it closes the drawer */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/30 z-20 md:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar: in-flow/static on desktop, fixed off-canvas drawer on
+          mobile — slides in via transform, not display:none, so the
+          transition actually animates. */}
+      <div
+        className={`
+          fixed md:static inset-y-0 left-0 z-30 md:z-auto
+          h-full min-h-0 shadow-xl md:shadow-none
+          transform transition-transform duration-200 ease-out
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
+        `}
+      >
         <ChatSidebar
           sessions={sessions}
           activeSessionId={activeSessionId}
           onSelectSession={handleSelectSession}
           onCreateNewChat={handleCreateNewChat}
           onDeleteSession={handleDeleteSession}
+          onClose={() => setIsSidebarOpen(false)}
         />
       </div>
 
       <div className="flex-1 flex flex-col min-w-0 min-h-0">
+        {/* Mobile-only bar: hamburger to open the drawer + current
+            session title, since the sidebar is hidden by default here */}
+        <div className="md:hidden shrink-0 flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-2.5">
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open chat history"
+            className="p-1 -ml-1 text-gray-600 hover:text-gray-900"
+          >
+            <Menu className="w-5 h-5" />
+          </button>
+          <span className="text-sm font-medium text-gray-700 truncate">
+            {activeSession?.title || "New Chat"}
+          </span>
+        </div>
+
         <div className="flex-1 overflow-y-auto min-h-0">
           <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 h-full flex flex-col justify-center space-y-4">
             {isEmpty ? (
