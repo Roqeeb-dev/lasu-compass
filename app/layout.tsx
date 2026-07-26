@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "LASU Compass AI",
     images: [
       {
-        url: "/og-image.svg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "LASU Compass AI preview card",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "LASU Compass AI – Smart Campus Assistant",
     description:
       "AI-powered campus support for Lagos State University students, offering instant answers and helpful guidance.",
-    images: ["/og-image.svg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -61,8 +61,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/file.svg",
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
   alternates: {
     canonical: siteUrl,
   },
