@@ -100,7 +100,6 @@ export default function CampusAssistantTab() {
     const updated = sessions.filter((s) => s.id !== id);
 
     if (updated.length === 0) {
-      // Never leave the user with zero sessions — start a fresh one
       const fresh = createSession();
       saveToStorage([fresh]);
       setActiveSessionId(fresh.id);
@@ -117,8 +116,8 @@ export default function CampusAssistantTab() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="h-[calc(100vh-112px)] flex bg-gray-50">
-      <div className="hidden md:flex">
+    <div className="h-full flex bg-gray-50">
+      <div className="hidden md:flex h-full min-h-0">
         <ChatSidebar
           sessions={sessions}
           activeSessionId={activeSessionId}
@@ -128,7 +127,7 @@ export default function CampusAssistantTab() {
         />
       </div>
 
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 min-h-0">
         <div className="flex-1 overflow-y-auto min-h-0">
           <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 h-full flex flex-col justify-center space-y-4">
             {isEmpty ? (
