@@ -18,8 +18,8 @@ export default function ProceduresGuideTab() {
   const isEmpty = messages.length === 0;
 
   return (
-    <div className="h-[calc(100vh-120px)] flex flex-col">
-      <div className="flex-1 overflow-y-auto">
+    <div className="h-full flex flex-col min-h-0">
+      <div className="flex-1 overflow-y-auto min-h-0">
         <div className="max-w-3xl mx-auto px-4 py-4 h-full flex flex-col justify-center space-y-3">
           {isEmpty ? (
             <ProcedureChips onSelect={sendMessage} />
@@ -35,8 +35,10 @@ export default function ProceduresGuideTab() {
         </div>
       </div>
 
-      <div className="max-w-3xl w-full mx-auto">
-        <ChatInput onSend={sendMessage} isLoading={isLoading} />
+      <div className="shrink-0 border-t border-gray-200 bg-white">
+        <div className="max-w-3xl w-full mx-auto">
+          <ChatInput onSend={sendMessage} isLoading={isLoading} />
+        </div>
       </div>
     </div>
   );

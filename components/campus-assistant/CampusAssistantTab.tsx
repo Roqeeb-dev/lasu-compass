@@ -120,7 +120,6 @@ export default function CampusAssistantTab() {
 
   return (
     <div className="h-full flex min-h-0 relative">
-      {/* Mobile-only dimmed backdrop, tapping it closes the drawer */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black/30 z-20 md:hidden"
@@ -128,9 +127,6 @@ export default function CampusAssistantTab() {
         />
       )}
 
-      {/* Sidebar: in-flow/static on desktop, fixed off-canvas drawer on
-          mobile — slides in via transform, not display:none, so the
-          transition actually animates. */}
       <div
         className={`
           fixed md:static inset-y-0 left-0 z-30 md:z-auto
@@ -150,8 +146,6 @@ export default function CampusAssistantTab() {
       </div>
 
       <div className="flex-1 flex flex-col min-w-0 min-h-0">
-        {/* Mobile-only bar: hamburger to open the drawer + current
-            session title, since the sidebar is hidden by default here */}
         <div className="md:hidden shrink-0 flex items-center gap-3 border-b border-gray-200 bg-white px-4 py-2.5">
           <button
             onClick={() => setIsSidebarOpen(true)}
