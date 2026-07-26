@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1b3c8a" />
+      <stop offset="100%" stop-color="#0f5286" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#e5f2ff" stop-opacity="0.9" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="80" y="90" width="1040" height="450" rx="32" fill="url(#card)" filter="drop-shadow(0 18px 40px rgba(0,0,0,0.18))" />
+  <rect x="110" y="130" width="300" height="90" rx="22" fill="#0f5286" />
+  <text x="130" y="190" fill="#fff" font-family="Inter, sans-serif" font-size="40" font-weight="700">LASU Compass AI</text>
+  <text x="130" y="240" fill="#0a2a5a" font-family="Inter, sans-serif" font-size="26">AI-powered campus assistant for Lagos State University</text>
+  <rect x="110" y="290" width="480" height="230" rx="24" fill="#f8fbff" stroke="#d1e4ff" stroke-width="2" />
+  <circle cx="170" cy="360" r="30" fill="#0f5286" />
+  <path d="M210 346h200v6H210zM210 370h160v6H210zM210 394h120v6H210z" fill="#a7c6f7" />
+  <rect x="640" y="280" width="360" height="180" rx="20" fill="#eff8ff" />
+  <path d="M680 330h300v12H680zM680 370h240v12H680zM680 410h200v12H680z" fill="#aac8f4" />
+  <circle cx="760" cy="355" r="16" fill="#0f5286" />
+  <path d="M760 342l18 24h-36z" fill="#184d8e" />
+  <text x="110" y="560" fill="#0f5286" font-family="Inter, sans-serif" font-size="26" font-weight="600">Built for students, powered by instant campus knowledge.</text>
+  <text x="110" y="600" fill="#08406a" font-family="Inter, sans-serif" font-size="18">Ready to replace this with a real app screenshot when available.</text>
+</svg>
