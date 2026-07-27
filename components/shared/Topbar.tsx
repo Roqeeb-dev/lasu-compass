@@ -1,5 +1,7 @@
 "use client";
 
+import Logo from "@/components/shared/Logo";
+
 export type TabKey = "assistant" | "procedures" | "letters";
 
 const TABS: { key: TabKey; label: string; shortLabel: string }[] = [
@@ -17,14 +19,8 @@ export default function TopBar({ activeTab, onTabChange }: Props) {
   return (
     <header className="shrink-0 border-b border-gray-200 bg-white">
       <div className="px-2 sm:px-4 h-14 flex items-center gap-2 sm:gap-4">
-        <div className="flex items-center gap-2 shrink-0">
-          <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-semibold text-xs shrink-0">
-            LC
-          </div>
-          <span className="text-sm font-semibold text-gray-900 hidden md:block whitespace-nowrap">
-            LASU Compass AI
-          </span>
-        </div>
+        <Logo wordmarkBreakpoint="md" />
+
         <nav className="flex-1 min-w-0 grid grid-cols-3">
           {TABS.map((tab) => {
             const isActive = tab.key === activeTab;
