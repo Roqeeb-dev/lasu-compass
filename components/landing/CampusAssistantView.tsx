@@ -1,4 +1,5 @@
 import { MessageSquare, ArrowRight, Send, FileText } from "lucide-react";
+import Link from "next/link";
 
 export default function CampusAssistantView() {
   return (
@@ -18,10 +19,13 @@ export default function CampusAssistantView() {
           its source, so you never have to guess whether the information is
           current.
         </p>
-        <button className="inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-blue-700 transition">
+        <Link
+          href="/app?tab=assistant"
+          className="inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-blue-700 transition"
+        >
           Try Campus Assistant
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
 
       {/* Right Column Browser Mockup */}

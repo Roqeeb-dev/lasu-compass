@@ -1,4 +1,5 @@
 import { ClipboardList, ArrowRight, FileText } from "lucide-react";
+import Link from "next/link";
 
 export default function ProceduresGuideView() {
   const proceduralTabs = [
@@ -24,10 +25,13 @@ export default function ProceduresGuideView() {
           broken down into clear, sequenced steps. No more hunting across five
           offices to find out what to do first.
         </p>
-        <button className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-emerald-700 transition">
+        <Link
+          href="/app?tab=procedures"
+          className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-emerald-700 transition"
+        >
           Try Procedures Guide
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
 
       {/* Right Column Layout Frame Mockup */}

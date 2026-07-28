@@ -1,4 +1,5 @@
 import { FileText, ArrowRight, Download } from "lucide-react";
+import Link from "next/link";
 
 export default function LetterGeneratorView() {
   return (
@@ -17,10 +18,13 @@ export default function LetterGeneratorView() {
           the HOD, Registrar, or Dean — structured exactly as LASU expects.
           Download as PDF, print, and submit.
         </p>
-        <button className="inline-flex items-center gap-2 rounded-xl bg-purple-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-purple-700 transition">
+        <Link
+          href="/app?tab=letters"
+          className="inline-flex items-center gap-2 rounded-xl bg-purple-600 text-white font-semibold text-sm px-5 py-3.5 hover:bg-purple-700 transition"
+        >
           Try Letter Generator
           <ArrowRight className="w-4 h-4" />
-        </button>
+        </Link>
       </div>
 
       {/* Right Column Letter Customizer Screen Mockup */}
