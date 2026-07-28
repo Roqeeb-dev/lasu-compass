@@ -9,7 +9,7 @@ export default function CampusAssistantView() {
           <MessageSquare className="w-3.5 h-3.5" />
           Campus Assistant
         </div>
-        <h3 className="text-3xl font-extrabold text-slate-900 tracking-tight leading-snug mb-5">
+        <h3 className="text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
           Instant answers, grounded in real LASU documents
         </h3>
         <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-8">

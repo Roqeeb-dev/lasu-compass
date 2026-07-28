@@ -69,7 +69,7 @@ export default function Description() {
             <span className="text-xs font-bold uppercase tracking-[0.25em] text-blue-500 block mb-3.5">
               Grounded, not guessing
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight mb-6">
               Built on retrieval, not hallucination
             </h2>
             <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">

@@ -49,7 +49,7 @@ export default function Problem() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 block mb-3">
               The Problem
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-5">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight mb-5">
               University admin is a maze
             </h2>
             <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
@@ -115,10 +115,10 @@ export default function Problem() {
                 </div>
 
                 {/* Value & Labels */}
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                <div className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
                   {value}
                 </div>
-                <div className="mt-2 text-sm font-bold text-slate-800">
+                <div className="mt-2 text-sm font-semibold text-slate-800">
                   {label}
                 </div>
                 <p className="mt-1 text-xs text-slate-400 font-medium">

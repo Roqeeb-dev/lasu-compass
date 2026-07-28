@@ -45,7 +45,7 @@ export default function Features() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600 block mb-3">
               Three tools, one place
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Everything a LASU student needs
             </h2>
           </div>

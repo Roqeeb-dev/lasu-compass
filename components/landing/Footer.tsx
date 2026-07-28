@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr] pb-12">
           {/* Brand Col */}
           <div className="space-y-4">
-            <Logo />
+            <Logo variant="light" />
             <p className="text-xs sm:text-sm text-slate-400 max-w-xs leading-relaxed">
               An AI-powered digital front desk for Lagos State University
               students.
@@ -52,7 +52,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs font-semibold text-slate-400">
               <li>
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Roqeeb-dev/lasu-compass.git"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 hover:text-white transition"
