@@ -2,8 +2,9 @@ import Link from "next/link";
 import { ArrowRight, FileText, Send } from "lucide-react";
 import Logo from "@/components/shared/Logo";
 import RevealSection from "@/components/shared/RevealSection";
+import TypingIndicator from "../campus-assistant/TypingIndicator";
 
-const MOCK_TABS = ["Campus Assistant", "Procedures", "Letters"];
+const MOCK_TABS = ["Assistant", "Procedures", "Letters"];
 
 export default function Hero() {
   return (
@@ -114,14 +115,7 @@ export default function Hero() {
                       </div>
                     </div>
 
-                    {/* Typing indicator */}
-                    <div className="flex justify-start">
-                      <div className="rounded-2xl rounded-bl-sm bg-gray-100 px-4 py-3 flex gap-1 items-center">
-                        <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]" />
-                        <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce [animation-delay:-0.15s]" />
-                        <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce" />
-                      </div>
-                    </div>
+                    <TypingIndicator />
                   </div>
 
                   <div className="border-t border-gray-100 px-4 py-3">
