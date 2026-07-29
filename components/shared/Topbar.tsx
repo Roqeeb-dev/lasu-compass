@@ -19,7 +19,7 @@ export default function TopBar({ activeTab, onTabChange }: Props) {
   return (
     <header className="shrink-0 border-b border-gray-200 bg-white">
       <div className="px-2 sm:px-4 h-14 flex items-center gap-2 sm:gap-4">
-        <Logo wordmarkBreakpoint="md" />
+        <Logo />
 
         <nav className="flex-1 min-w-0 grid grid-cols-3">
           {TABS.map((tab) => {
