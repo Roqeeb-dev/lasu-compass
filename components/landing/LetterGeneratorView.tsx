@@ -11,12 +11,13 @@ export default function LetterGeneratorView() {
           Letter Generator
         </div>
         <h3 className="text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
-          Official letters drafted in seconds, ready to print
+          Official letters, officially formatted, ready to print.
         </h3>
         <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-8">
-          Fill in your details and get a properly formatted formal letter — to
-          the HOD, Registrar, or Dean — structured exactly as LASU expects.
-          Download as PDF, print, and submit.
+          Fill in your details and get a properly formatted letter, addressed to
+          the HOD, Registrar, or Dean, structured exactly as LASU expects.
+          Download as PDF, print, and submit. Rome wasn't built in a day, but
+          your transcript request can be, in seconds.
         </p>
         <Link
           href="/app?tab=letters"

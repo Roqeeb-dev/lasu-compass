@@ -1,18 +1,38 @@
+import {
+  Briefcase,
+  Clipboard,
+  BadgeCheck,
+  GraduationCap,
+  FileText,
+  FileCheck,
+} from "lucide-react";
+
 const PROCEDURES = [
   {
-    label: "SIWES Registration",
+    label: "SIWES",
     query: "How do I complete SIWES registration?",
+    icon: Briefcase,
   },
-  { label: "Course Registration", query: "How do I register my courses?" },
+  {
+    label: "Course Registration",
+    query: "How do I register my courses?",
+    icon: Clipboard,
+  },
   {
     label: "Freshers' Clearance",
     query: "How do I complete freshers' clearance?",
+    icon: BadgeCheck,
   },
   {
     label: "Final-Year Clearance",
     query: "How do I complete final-year clearance?",
+    icon: GraduationCap,
   },
-  { label: "Transcript Requests", query: "How do I request my transcript?" },
+  {
+    label: "Transcript Requests",
+    query: "How do I request my transcript?",
+    icon: FileText,
+  },
 ];
 
 type Props = {
@@ -22,38 +42,31 @@ type Props = {
 export default function ProcedureChips({ onSelect }: Props) {
   return (
     <div className="flex flex-col items-center justify-center h-full px-4 sm:px-6 text-center">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-        Which procedure do you need help with?
+      <div className="relative w-16 h-16 flex items-center justify-center mb-5">
+        <div className="absolute inset-0 rounded-full bg-emerald-50" />
+        <div className="absolute inset-2 rounded-full bg-white border-2 border-emerald-500 shadow-sm" />
+        <FileCheck
+          className="relative w-5 h-5 text-emerald-600"
+          strokeWidth={2}
+        />
+      </div>
+
+      <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        Official Procedures Guide
       </h2>
-      <p className="text-sm sm:text-base text-gray-500 mb-8">
-        Pick one below, or ask a follow-up question anytime
+      <p className="text-sm text-gray-500 mb-8 max-w-md">
+        Select any procedure below to get a clear, step-by-step breakdown.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 w-full max-w-3xl">
-        {PROCEDURES.map((p) => (
+      <div className="flex flex-wrap justify-center gap-3 max-w-2xl">
+        {PROCEDURES.map(({ label, query, icon: Icon }) => (
           <button
-            key={p.label}
-            onClick={() => onSelect(p.query)}
-            className="group flex items-center gap-3 text-left px-4 py-4 rounded-2xl border-2 border-gray-200 bg-white shadow-sm hover:border-blue-500 hover:shadow-md active:scale-[0.98] transition-all"
+            key={label}
+            onClick={() => onSelect(query)}
+            className="flex items-center gap-2 text-sm font-semibold px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-900 shadow-sm hover:border-blue-400 hover:shadow-md active:scale-[0.98] transition-all"
           >
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-5 w-5"
-              >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                <path d="M14 2v6h6" />
-              </svg>
-            </span>
-            <span className="text-sm sm:text-base font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-              {p.label}
-            </span>
+            <Icon className="w-4 h-4 text-blue-500 shrink-0" />
+            {label}
           </button>
         ))}
       </div>

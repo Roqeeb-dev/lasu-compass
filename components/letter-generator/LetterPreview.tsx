@@ -12,27 +12,17 @@ export default function LetterPreview({
   data,
   isPrinting = false,
 }: Props) {
-  const config = letterConfigs[letterType];
-  const recipientLines = buildRecipientLines(config);
+  const config = letterType ? letterConfigs[letterType] : undefined;
+  const recipientLines = config ? buildRecipientLines(config) : null;
 
-  // Helper to render visual cues for placeholders and filled fields
   const renderField = (value: string, placeholder: string) => {
     const isPlaceholder = !value;
     const displayText = value || placeholder;
 
-    // When exporting to PDF, strip all highlights to maintain clean, standard paper formatting
-    if (isPrinting) {
-      return displayText;
-    }
+    if (isPrinting) return displayText;
 
     return (
-      <span
-        className={`px-1 rounded transition-all font-sans text-xs ${
-          isPlaceholder
-            ? "bg-gray-100 text-gray-400 border border-dashed border-gray-300"
-            : "bg-blue-50 text-blue-900 border border-blue-100 font-medium"
-        }`}
-      >
+      <span className={isPlaceholder ? "italic text-gray-400" : undefined}>
         {displayText}
       </span>
     );
@@ -52,51 +42,81 @@ export default function LetterPreview({
     >
       {/* Sender Block */}
       <div className="mb-6 whitespace-pre-line">
-        {renderField(data.name, "[Your Name]")}
+        {renderField(data.name, "Your Full Name")}
         {"\n"}
-        {renderField(data.matricNo, "[Matric No.]")}
+        {renderField(data.matricNo, "Matric Number")}
         {"\n"}
-        Department of {renderField(data.department, "[Department]")}
+        {renderField(data.department, "Department")}
         {"\n"}
-        Faculty of {renderField(data.faculty, "[Faculty]")}
+        {renderField(data.faculty, "Faculty")}
         {"\n"}
-        Lagos State University, Ojo.
-        {"\n"}
-        {renderField(data.date, "[Date]")}
+        {data.date}
       </div>
 
-      {/* Recipient Chain */}
+      {/* Recipient Chain — real once a letter type is chosen, a
+          generic illustrative shell before that */}
       <div className="mb-4">
-        {recipientLines.map((line, i) => (
-          <p key={i} className="font-semibold">
-            {line}
-          </p>
-        ))}
+        {recipientLines ? (
+          recipientLines.map((line, i) => (
+            <p key={i} className="font-semibold">
+              {line}
+            </p>
+          ))
+        ) : (
+          <>
+            <p className="font-semibold">To:</p>
+            <p>The Registrar / Head of Department</p>
+            <p>Lagos State University, Ojo, Lagos</p>
+            <p className="font-semibold mt-2">Through:</p>
+            <p>The {renderField(data.faculty, "[Faculty]")} Dean</p>
+            <p>Faculty of {renderField(data.faculty, "[Faculty]")}</p>
+          </>
+        )}
       </div>
 
       <p className="mb-4">Dear Sir/Madam,</p>
 
       {/* Subject Line */}
       <p className="mb-4 font-bold uppercase text-center">
-        {config.subject(data)}
+        {config ? (
+          config.subject(data)
+        ) : (
+          <span className="italic text-gray-400 normal-case font-normal">
+            Subject line appears here
+          </span>
+        )}
       </p>
 
-      {/* Body with inline highlighted purpose reflection */}
+      {/* Body */}
       <div className="mb-6 whitespace-pre-line">
-        {config.body(data)}
-        {"\n\n"}
-        {renderField(data.purpose, "[Your polished purpose will appear here]")}
+        {config ? (
+          <>
+            {config.body(data)}
+            {"\n\n"}
+            {renderField(
+              data.purpose,
+              "Your polished purpose will appear here",
+            )}
+            {"\n\n"}I hereby attach all relevant documents to support this
+            request and shall make myself available for any further inquiries.
+            {"\n\n"}I trust that this request will be given your favourable
+            consideration. Thank you.
+          </>
+        ) : (
+          <span className="italic text-gray-400">
+            Your letter body will appear here once you select a letter type and
+            fill in the details above.
+          </span>
+        )}
       </div>
-
-      <p className="mb-1">Thank you for your kind consideration.</p>
 
       {/* Closing Block */}
       <div className="mt-8">
         <p>Yours faithfully,</p>
         <p className="mt-4 font-semibold">
-          {renderField(data.name, "[Your Name]")}
+          {renderField(data.name, "Your Name")}
         </p>
-        <p>{renderField(data.matricNo, "[Matric No.]")}</p>
+        <p>{renderField(data.matricNo, "Matric No.")}</p>
       </div>
     </div>
   );

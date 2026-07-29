@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useChat } from "@/hooks/useChat";
-import { Compass, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import ChatMessage from "@/components/campus-assistant/ChatMessage";
 import ChatInput from "@/components/campus-assistant/ChatInput";
 import TypingIndicator from "@/components/campus-assistant/TypingIndicator";
@@ -86,7 +86,7 @@ export default function CampusAssistantTab() {
     if (selected && setMessages) {
       setMessages(selected.messages);
     }
-    setIsSidebarOpen(false); // close drawer after picking a chat on mobile
+    setIsSidebarOpen(false);
   };
 
   const handleCreateNewChat = () => {
@@ -160,33 +160,19 @@ export default function CampusAssistantTab() {
         </div>
 
         <div className="flex-1 overflow-y-auto min-h-0">
-          <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 h-full flex flex-col justify-center space-y-4">
-            {isEmpty ? (
-              <div className="flex flex-col items-center text-center gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
-                  <Compass className="w-8 h-8 stroke-[1.5]" />
-                </div>
-                <div className="space-y-2 max-w-md">
-                  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                    Welcome to{" "}
-                    <span className="text-blue-600">LASU Compass AI</span>
-                  </h2>
-                  <p className="text-sm sm:text-base text-gray-500">
-                    Ask about courses, procedures, and clearance guidelines.
-                  </p>
-                </div>
-                <SuggestedQuestions onSelect={sendMessage} />
-              </div>
-            ) : (
-              <>
-                {messages.map((msg, i) => (
-                  <ChatMessage key={i} {...msg} />
-                ))}
-                {isLoading && <TypingIndicator />}
-              </>
-            )}
-            <div ref={bottomRef} />
-          </div>
+          {isEmpty ? (
+            <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 h-full flex flex-col justify-center">
+              <SuggestedQuestions onSelect={sendMessage} />
+            </div>
+          ) : (
+            <div className="max-w-3xl mx-auto px-4 md:px-6 py-6 space-y-4">
+              {messages.map((msg, i) => (
+                <ChatMessage key={i} {...msg} />
+              ))}
+              {isLoading && <TypingIndicator />}
+              <div ref={bottomRef} />
+            </div>
+          )}
         </div>
 
         <div className="shrink-0 border-t border-gray-200 bg-white">

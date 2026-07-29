@@ -4,7 +4,6 @@ import { useState } from "react";
 import { LetterData } from "@/types/types";
 import { letterConfigs } from "@/types/templates";
 import { polishPurpose } from "@/lib/apiclient";
-import { Sparkles, Loader2 } from "lucide-react";
 
 type Props = {
   letterType: string;

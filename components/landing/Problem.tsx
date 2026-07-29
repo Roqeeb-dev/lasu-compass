@@ -53,9 +53,10 @@ export default function Problem() {
               University admin is a maze
             </h2>
             <p className="text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              Finding accurate, current information at LASU means bouncing
-              between noticeboard, WhatsApp groups, and waiting in lines. It
-              shouldn't be this hard.
+              Finding the truth at LASU means bouncing between the noticeboard,
+              four different WhatsApp groups, and a queue that ends with "go and
+              meet another office." It shouldn't take a whole afternoon to find
+              one deadline.
             </p>
           </div>
 

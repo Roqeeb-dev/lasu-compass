@@ -73,8 +73,8 @@ export default function Description() {
               Built on retrieval, not hallucination
             </h2>
             <p className="text-sm sm:text-base text-slate-400 max-w-2xl mx-auto leading-relaxed">
-              Every answer traces back to official LASU documents. We use RAG —
-              retrieval-augmented generation — so the AI can only say what the
+              Every answer traces back to an official LASU document. We use RAG
+              (retrieval-augmented generation), so the AI can only say what the
               documents actually say.
             </p>
           </div>
