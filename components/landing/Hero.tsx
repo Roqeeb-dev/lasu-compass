@@ -20,8 +20,8 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 pt-16 sm:pt-20 pb-16 sm:pb-24">
         <RevealSection>
           <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
-            {/* Left column */}
-            <div className="max-w-xl">
+            {/* Left column — Centered on mobile/tablet, left-aligned on desktop */}
+            <div className="max-w-xl mx-auto lg:mx-0 flex flex-col items-center text-center lg:items-start lg:text-left">
               <div className="inline-flex items-center rounded-full border border-blue-800/60 bg-blue-950/40 text-blue-300 text-xs font-semibold px-3 py-1.5 mb-6">
                 GDGoC-LASU Hackathon Winner
               </div>
@@ -38,17 +38,17 @@ export default function Hero() {
                 and official letters, all in one place.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">
                 <Link
                   href="/app"
-                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 text-white font-semibold px-5 py-3 hover:bg-blue-700 active:scale-[0.98] transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 text-white font-semibold px-5 py-3 hover:bg-blue-700 active:scale-[0.98] transition-all w-full sm:w-auto"
                 >
                   Try it free
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <a
                   href="#how-it-works"
-                  className="inline-flex items-center rounded-xl border border-slate-700 bg-slate-900 text-white font-semibold px-5 py-3 hover:bg-slate-800 transition-colors"
+                  className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900 text-white font-semibold px-5 py-3 hover:bg-slate-800 transition-colors w-full sm:w-auto"
                 >
                   See how it works
                 </a>
@@ -90,7 +90,7 @@ export default function Hero() {
 
                   <div className="px-4 py-4 space-y-3 min-h-[220px]">
                     <div className="flex justify-start">
-                      <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-gray-100 px-4 py-2.5 text-sm text-gray-900 leading-relaxed">
+                      <div className="max-w-[85%] rounded-2xl rounded-bl-sm bg-gray-100 px-4 py-2.5 text-sm text-gray-900 leading-relaxed text-left">
                         Course registration opens on the student portal. Make
                         sure your school fees are cleared first — the window is
                         usually 3–4 weeks per semester.
@@ -109,7 +109,7 @@ export default function Hero() {
 
                     {/* User message */}
                     <div className="flex justify-end">
-                      <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-blue-600 text-white px-4 py-2.5 text-sm leading-relaxed">
+                      <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-blue-600 text-white px-4 py-2.5 text-sm leading-relaxed text-left">
                         Where do I submit my SIWES log book?
                       </div>
                     </div>
@@ -126,7 +126,7 @@ export default function Hero() {
 
                   <div className="border-t border-gray-100 px-4 py-3">
                     <div className="flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 pl-4 pr-1.5 py-1.5">
-                      <span className="flex-1 text-sm text-gray-400 truncate">
+                      <span className="flex-1 text-sm text-gray-400 truncate text-left">
                         Ask anything about LASU...
                       </span>
                       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white">
