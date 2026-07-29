@@ -23,19 +23,19 @@ export default function Hero() {
             {/* Left column — Centered on mobile/tablet, left-aligned on desktop */}
             <div className="max-w-xl mx-auto lg:mx-0 flex flex-col items-center text-center lg:items-start lg:text-left">
               <div className="inline-flex items-center rounded-full border border-blue-800/60 bg-blue-950/40 text-blue-300 text-xs font-semibold px-3 py-1.5 mb-6">
-                GDGoC-LASU Hackathon Winner
+                GDGoC × LASU Hackathon, 1st Place
               </div>
 
-              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight mb-6">
-                <span className="text-white">Your university,</span>
+              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-6">
+                <span className="text-white">Stop guessing,</span>
                 <br />
-                <span className="text-blue-500">finally answered.</span>
+                <span className="text-blue-500">Start knowing.</span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-400 leading-8 mb-8">
-                LASU Compass AI is the intelligent front desk every Lagos State
-                University student deserves — instant answers, procedure guides,
-                and official letters, all in one place.
+                LASU Compass AI answers your questions, walks you through every
+                procedure, and drafts your official letters. Every word traces
+                back to a real LASU document.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto">

@@ -12,8 +12,8 @@ export default function Footer() {
           <div className="space-y-4">
             <Logo variant="light" />
             <p className="text-xs sm:text-sm text-slate-400 max-w-xs leading-relaxed">
-              An AI-powered digital front desk for Lagos State University
-              students.
+              For truth and service, now in your pocket. Built for LASU
+              students, grounded in real LASU documents.
             </p>
           </div>
 
@@ -79,12 +79,13 @@ export default function Footer() {
         {/* Divider line */}
         <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] font-semibold text-slate-500">
           <div>
-            <p>© 2025 LASU Compass AI. Built at LASU AI Hackathon.</p>
+            <p>
+              © 2026 LASU Compass AI. An independent, student-built project, not
+              officially operated by Lagos State University.
+            </p>
           </div>
           <div>
-            <p className="text-slate-600">
-              Powered by Gemma 3 · RAG Pipeline · Open Source
-            </p>
+            <p className="text-slate-600">Gemma-powered · RAG grounded</p>
           </div>
         </div>
       </div>

@@ -62,8 +62,8 @@ export default function Team() {
               {/* Description */}
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                 LASU Compass AI was designed, built, and deployed entirely
-                within a single hackathon session. The full source is open —
-                explore the architecture, fork it, extend it.
+                within a single hackathon session. The full source is open.
+                Explore the architecture, fork it, extend it.
               </p>
 
               {/* Action Button */}

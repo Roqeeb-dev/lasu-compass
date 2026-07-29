@@ -11,13 +11,14 @@ export default function CampusAssistantView() {
           Campus Assistant
         </div>
         <h3 className="text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
-          Instant answers, grounded in real LASU documents
+          Not rumors. Not groups. Real answers.
         </h3>
         <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-8">
-          Ask anything — course registration, fee deadlines, office locations.
-          Every answer is pulled from verified university documents and cites
-          its source, so you never have to guess whether the information is
-          current.
+          Ask anything: course registration, fee deadlines, office locations.
+          Every answer is pulled from verified university documents, so you
+          never have to guess whether it's still current. "First say it
+          straight." Every answer here does exactly that, then shows you the
+          page.
         </p>
         <Link
           href="/app?tab=assistant"

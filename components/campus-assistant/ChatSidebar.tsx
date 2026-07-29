@@ -78,7 +78,7 @@ export default function ChatSidebar({
 
                 <button
                   onClick={(e) => onDeleteSession(session.id, e)}
-                  className="opacity-0 group-hover:opacity-100 hover:bg-red-50 p-1 rounded-md text-red-500 transition-all shrink-0"
+                  className="bg-red-50 p-1 rounded-md text-red-500 transition-all shrink-0"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>

@@ -18,12 +18,13 @@ export default function ProceduresGuideView() {
           Procedures Guide
         </div>
         <h3 className="text-3xl font-bold text-slate-900 tracking-tight leading-snug mb-5">
-          Step-by-step guidance for every official process
+          Skip the queue. Skip the guesswork. Skip the wait.
         </h3>
         <p className="text-sm sm:text-base text-slate-500 leading-relaxed mb-8">
-          SIWES, transcript requests, clearance — every bureaucratic procedure
-          broken down into clear, sequenced steps. No more hunting across five
-          offices to find out what to do first.
+          SIWES, transcript requests, clearance: every bureaucratic process
+          broken into clear, sequenced steps, each one cited to the official
+          guide it came from. No more hunting across five offices to find out
+          what to do first.
         </p>
         <Link
           href="/app?tab=procedures"
