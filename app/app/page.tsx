@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import TopBar, { TabKey } from "@/components/shared/Topbar";
 import CampusAssistantTab from "@/components/campus-assistant/CampusAssistantTab";
 import ProceduresGuideTab from "@/components/procedures-guide/ProceduresGuideTab";
@@ -9,14 +8,17 @@ import LetterGeneratorTab from "@/components/letter-generator/LetterGeneratorTab
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabKey>("assistant");
-  const searchParams = useSearchParams();
-
   useEffect(() => {
-    const tab = searchParams?.get("tab");
-    if (tab === "assistant" || tab === "procedures" || tab === "letters") {
-      setActiveTab(tab as TabKey);
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get("tab");
+      if (tab === "assistant" || tab === "procedures" || tab === "letters") {
+        setActiveTab(tab as TabKey);
+      }
+    } catch (e) {
+      // window may be undefined during SSR — nothing to do
     }
-  }, [searchParams]);
+  }, []);
 
   return (
     <div className="h-screen overflow-hidden flex flex-col bg-gray-50">
